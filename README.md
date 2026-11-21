@@ -3,7 +3,7 @@
 Personal portfolio site: a single static `index.html` (no build step).
 
 Case studies:
-- **SinoprexInvoice** — agentic AI invoice processing for accounts payable
+- **Sinoprex Invoice** — agentic AI invoice processing for accounts payable
 - **Minocy IT Help** — edge-native AI self-service IT portal on Cloudflare Workers
 
 ## Run locally
