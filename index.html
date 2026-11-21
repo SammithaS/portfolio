@@ -63,14 +63,14 @@ nav a.contact{background:var(--grad);color:#fff;box-shadow:0 8px 20px -6px rgba(
 .badge::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(251,191,36,.2);animation:ping 2s var(--ease) infinite}
 @keyframes ping{50%{box-shadow:0 0 0 7px rgba(251,191,36,0)}}
 .avatar{width:84px;height:84px;margin:0 auto 18px;border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-size:34px;background:var(--grad);box-shadow:0 0 0 6px rgba(255,255,255,.06)}
-.hero h1{font-size:clamp(38px,6.2vw,64px);margin:26px auto 0;max-width:15ch}
-.hero .lede{margin:22px auto 0;max-width:58ch;font-size:18px;
+.hero h1{font-size:clamp(38px,5.4vw,62px);margin:22px 0 0;max-width:14ch}
+.hero .lede{margin:20px 0 0;max-width:54ch;font-size:17.5px;
   background:linear-gradient(to right,#6B8A8C,#FFF7ED,#6B8A8C);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer 6s linear infinite}
 @keyframes shimmer{from{background-position:200% 0}to{background-position:-200% 0}}
 .flow{margin-top:22px;font-family:var(--mono);font-size:12.5px;color:var(--muted);display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center}
 .flow b{font-weight:500;color:#fff;border:1px solid var(--line);background:var(--glass);padding:4px 10px;border-radius:6px}
 .btns{display:flex;flex-wrap:wrap;gap:14px}
-.hero .btns{justify-content:center;margin-top:34px}
+.hero .btns{margin-top:30px}
 .btn{display:inline-flex;align-items:center;gap:8px;height:48px;padding:0 24px;border-radius:12px;font-weight:600;font-size:15.5px;text-decoration:none;border:1px solid rgba(255,255,255,.15);color:#fff;background:transparent;transition:all .3s var(--ease)}
 .btn:hover{background:rgba(255,255,255,.08);transform:translateY(-2px)}
 .btn.primary{background:var(--coral);border-color:var(--coral);color:var(--on-accent)}
@@ -78,6 +78,29 @@ nav a.contact{background:var(--grad);color:#fff;box-shadow:0 8px 20px -6px rgba(
 .btn .arr{transition:transform .3s var(--ease)}
 .btn:hover .arr{transform:translate(2px,-2px)}
 
+/* split hero + agent console */
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;text-align:left}
+.hero > *{min-width:0}
+.hero .rings i{left:72%}
+.console{position:relative;margin:0;background:rgba(7,16,18,.85);border:1px solid var(--line);border-radius:20px;padding:18px;font-family:var(--mono);font-size:13.5px;
+  box-shadow:0 40px 80px -40px rgba(0,0,0,.9),0 0 0 1px rgba(251,113,133,.08)}
+.con-head{display:flex;align-items:center;gap:12px;padding-bottom:14px;border-bottom:1px dashed var(--line)}
+.dots{display:flex;gap:6px}.dots i{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.15)}
+.dots i:first-child{background:var(--coral)}.dots i:nth-child(2){background:var(--gold)}
+.con-head code{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--ink-2)}
+.con-status{font-size:11.5px;padding:3px 9px;border-radius:999px;border:1px solid currentColor;color:var(--gold);transition:color .3s var(--ease)}
+.con-status.ok{color:var(--ok)}
+.log{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:4px}
+.log li{display:grid;grid-template-columns:20px 1fr auto;gap:10px;align-items:center;padding:9px 10px;border-radius:10px;color:var(--muted);transition:background .36s var(--ease-out),color .36s var(--ease-out)}
+.log li b{width:14px;height:14px;border-radius:50%;border:1.5px solid rgba(255,255,255,.25);display:grid;place-items:center;font-size:10px;line-height:1}
+.log li small{font-size:11.5px;color:var(--muted)}
+.log li.done{color:var(--ink)} .log li.done b{border-color:var(--ok);background:var(--ok)} .log li.done b::after{content:"✓";color:#071012;font-weight:700}
+.log li.run{background:rgba(251,191,36,.08);color:var(--ink)} .log li.run b{border-color:var(--gold);border-top-color:transparent;animation:spin .8s linear infinite}
+.log li.wait{background:rgba(251,113,133,.1);color:var(--ink)} .log li.wait b{border-color:var(--coral);background:var(--coral);animation:heartbeat 1.5s ease-in-out infinite}
+.con-foot{display:flex;align-items:center;gap:14px;margin-top:14px;padding-top:14px;border-top:1px dashed var(--line);font-size:12px;color:var(--ink-2)}
+.con-foot span:first-child{flex:1;min-width:0}
+.bar{width:90px;height:6px;border-radius:99px;background:rgba(255,255,255,.08);overflow:hidden;flex:none}
+.bar i{display:block;height:100%;background:var(--grad);transition:width .6s var(--ease-out)}
 /* load-in */
 .rise{animation:rise .9s var(--ease-out) both}
 .rise.d1{animation-delay:.08s}.rise.d2{animation-delay:.16s}.rise.d3{animation-delay:.24s}.rise.d4{animation-delay:.32s}
@@ -186,7 +209,8 @@ footer a{text-decoration:none;transition:color .3s var(--ease)} footer a:hover{c
   .cards{grid-template-columns:1fr}
   .card.wide{grid-column:auto}
   .cta{grid-template-columns:1fr}
-  .hero{padding-block:120px 80px}
+  .hero{padding-block:110px 70px;grid-template-columns:1fr;gap:40px}
+  .hero .rings i{left:50%}
 }
 @media (max-width:420px){ nav a{padding:7px 11px;font-size:13px} }
 @media (prefers-reduced-motion:reduce){
@@ -210,24 +234,37 @@ footer a{text-decoration:none;transition:color .3s var(--ease)} footer a:hover{c
   <section class="hero">
     <div class="rings" aria-hidden="true">
       <i></i><i></i><i></i><i></i>
-      <span class="star" style="left:62%;top:14%;--s:14px;--d:24s"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg></span>
-      <span class="star" style="left:78%;top:24%;--s:12px;--d:30s"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg></span>
-      <span class="star" style="left:86%;top:40%;--s:16px;--d:22s"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg></span>
-      <span class="star" style="left:12%;top:30%;--s:12px;--d:28s"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg></span>
-      <span class="star" style="left:20%;top:64%;--s:15px;--d:26s"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg></span>
-      <span class="star" style="left:84%;top:80%;--s:12px;--d:21s"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg></span>
+      <span class="star" style="left:48%;top:16%;--s:14px;--d:24s"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg></span>
+      <span class="star" style="left:92%;top:12%;--s:12px;--d:30s"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg></span>
+      <span class="star" style="left:6%;top:78%;--s:15px;--d:26s"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg></span>
+      <span class="star" style="left:90%;top:86%;--s:12px;--d:21s"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg></span>
     </div>
-    <div class="avatar rise" aria-hidden="true">S</div>
-    <span class="badge rise d1">Applied AI Engineer · 2+ years</span>
-    <h1 class="rise d2">Building AI Agents That Show Their Work</h1>
-    <p class="lede rise d3">Hi, I'm Sammitha, an Applied AI Engineer with 2+ years of experience. I specialize in full stack development, and AI is my favourite side interest. I build systems for real back-office work, like reading invoices, fixing IT problems and routing approvals.</p>
-    <div class="flow rise d3" aria-label="How my systems work"><b>read</b>→<b>retrieve</b>→<b>decide</b>→<b>pause for a person</b>→<b>act &amp; verify</b></div>
-    <div class="btns rise d4">
-      <a class="btn" href="#work">Explore My Work ↓</a>
-      <a class="btn primary" href="#contact">Let's Connect</a>
+    <div class="hero-copy">
+      <span class="badge rise">Applied AI Engineer · 2+ years</span>
+      <h1 class="rise d1">I build AI agents that <span class="grad-text">show their work.</span></h1>
+      <p class="lede rise d2">Hi, I'm Sammitha, an Applied AI Engineer with 2+ years of experience. I specialize in full stack development, and AI is my favourite side interest. I build systems for real back-office work, like reading invoices, fixing IT problems and routing approvals.</p>
+      <div class="btns rise d3">
+        <a class="btn primary" href="#contact">Let's Connect</a>
+        <a class="btn" href="#work">Explore My Work ↓</a>
+      </div>
     </div>
+    <figure class="console rise d2" aria-label="Example agent run, sample data">
+      <div class="con-head">
+        <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+        <code id="con-title">agent.run("INV-TN-2291")</code>
+        <span class="con-status" id="con-status">running</span>
+      </div>
+      <ol class="log" id="log">
+        <li class="done"><b></b><span>read · 18 fields extracted</span><small>0.8s</small></li>
+        <li class="done"><b></b><span>retrieve · 3 contract clauses</span><small>1.2s</small></li>
+        <li class="done"><b></b><span>decide · 20 checks, 1 flag</span><small>0.3s</small></li>
+        <li class="wait"><b></b><span>pause · ask Procurement</span><small>…</small></li>
+        <li><b></b><span>post and verify in ERP</span><small></small></li>
+      </ol>
+      <div class="con-foot"><span id="con-note">Rate +10% vs contract cl. 7.3</span><span class="bar"><i id="bar" style="width:70%"></i></span></div>
+      <figcaption class="cap">Sample run · fictional data</figcaption>
+    </figure>
   </section>
-
   <!-- ===== PROJECT 1: INVOICE ===== -->
   <div id="work"></div>
   <header class="case-intro" id="invoice">
@@ -395,7 +432,32 @@ document.getElementById('copy').addEventListener('click', async e => {
   catch { const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); e.target.textContent = 'Press Ctrl+C'; }
   setTimeout(() => e.target.textContent = 'Copy', 2000);
 });
-// highlight the nav pill for the section in view
+// hero console: replay sample agent runs
+(() => {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const runs = [
+    { title: 'agent.run("INV-TN-2291")', steps: [['read · 18 fields extracted','0.8s'],['retrieve · 3 contract clauses','1.2s'],['decide · 20 checks, 1 flag','0.3s'],['pause · ask Procurement','approved'],['post and verify in ERP','₹0.00 diff']], wait: 3, note: ['Rate +10% vs contract cl. 7.3','Posted and read back · APPROVED'] },
+    { title: 'agent.run("TCK-0412 vpn")', steps: [['triage · Network, P3','0.4s'],['search KB · KB-014 matched','0.9s'],['guide user · 2 fixes tried','2 steps'],['escalate · ticket to Network','SLA 8h'],['email · team notified','sent']], wait: -1, note: ['Fix did not work, escalating','Ticket raised with full history'] }
+  ];
+  const log = document.getElementById('log'), title = document.getElementById('con-title'), status = document.getElementById('con-status'), note = document.getElementById('con-note'), bar = document.getElementById('bar');
+  const sleep = ms => new Promise(r => setTimeout(r, ms));
+  let k = 0;
+  async function play(run) {
+    title.textContent = run.title; status.textContent = 'running'; status.classList.remove('ok'); note.textContent = run.note[0];
+    log.innerHTML = run.steps.map(s => `<li><b></b><span>${s[0]}</span><small></small></li>`).join('');
+    const items = [...log.children];
+    for (let i = 0; i < items.length; i++) {
+      const li = items[i]; li.className = 'run'; li.lastChild.textContent = '…';
+      bar.style.width = (i / items.length * 100) + '%';
+      await sleep(1000);
+      if (i === run.wait) { li.className = 'wait'; status.textContent = 'waiting for a person'; await sleep(2200); status.textContent = 'running'; }
+      li.className = 'done'; li.lastChild.textContent = run.steps[i][1];
+    }
+    bar.style.width = '100%'; status.textContent = 'done'; status.classList.add('ok'); note.textContent = run.note[1];
+    await sleep(3200);
+  }
+  (async function loop() { await sleep(1500); for (;;) { await play(runs[k++ % runs.length]); } })();
+})();// highlight the nav pill for the section in view
 const links = [...document.querySelectorAll('nav a[data-sec]')];
 const marks = { top: document.getElementById('top'), work: document.getElementById('work'), about: document.getElementById('about') };
 function setActive() {
