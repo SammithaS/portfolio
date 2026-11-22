@@ -128,6 +128,9 @@ nav a.contact{background:var(--grad);color:#fff;box-shadow:0 8px 20px -6px rgba(
 .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
 .tag{font-family:var(--mono);font-size:12.5px;padding:5px 10px;border:1px solid var(--line);border-radius:6px;color:var(--ink-2);background:var(--glass)}
 .links{margin-top:26px}
+.btn.soon{cursor:default;opacity:.85}
+.btn.soon:hover{transform:none;box-shadow:none}
+.tag-soon{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:3px 7px;border-radius:6px;background:rgba(59,10,20,.18)}
 
 /* mocks */
 .mock{position:sticky;top:90px;margin:0;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02));border:1px solid var(--line);border-radius:24px;padding:22px;
@@ -290,8 +293,7 @@ footer a{text-decoration:none;transition:color .3s var(--ease)} footer a:hover{c
       </ol>
       <div class="tags"><span class="tag">Next.js 16</span><span class="tag">FastAPI</span><span class="tag">LangGraph</span><span class="tag">Neon Postgres</span><span class="tag">pgvector</span><span class="tag">Gemini</span><span class="tag">n8n</span></div>
       <div class="btns links">
-        <a class="btn primary" href="#" data-placeholder="invoice-demo">Live demo <span class="arr">↗</span></a>
-        <a class="btn" href="#" data-placeholder="invoice-code">Source <span class="arr">↗</span></a>
+        <a class="btn primary demo soon" href="#" data-demo="invoice" aria-disabled="true">▶ Demo video <span class="tag-soon">coming soon</span></a>
       </div>
     </div>
 
@@ -335,8 +337,7 @@ footer a{text-decoration:none;transition:color .3s var(--ease)} footer a:hover{c
       </ol>
       <div class="tags"><span class="tag">Cloudflare Workers</span><span class="tag">Agents SDK</span><span class="tag">D1</span><span class="tag">Vectorize</span><span class="tag">Hono</span><span class="tag">React 19</span><span class="tag">promptfoo</span></div>
       <div class="btns links">
-        <a class="btn primary" href="#" data-placeholder="it-demo">Live demo <span class="arr">↗</span></a>
-        <a class="btn" href="#" data-placeholder="it-code">Source <span class="arr">↗</span></a>
+        <a class="btn primary demo soon" href="#" data-demo="it" aria-disabled="true">▶ Demo video <span class="tag-soon">coming soon</span></a>
       </div>
     </div>
 
@@ -460,7 +461,9 @@ document.getElementById('copy').addEventListener('click', async e => {
     await sleep(3200);
   }
   (async function loop() { await sleep(1500); for (;;) { await play(runs[k++ % runs.length]); } })();
-})();// highlight the nav pill for the section in view
+})();// demo buttons wait for their video link
+document.querySelectorAll('.btn.soon').forEach(a => a.addEventListener('click', e => e.preventDefault()));
+// highlight the nav pill for the section in view
 const links = [...document.querySelectorAll('nav a[data-sec]')];
 const marks = { top: document.getElementById('top'), work: document.getElementById('work'), about: document.getElementById('about') };
 function setActive() {
